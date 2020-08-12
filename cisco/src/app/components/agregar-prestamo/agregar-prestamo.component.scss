@@ -1,0 +1,46 @@
+ion-grid {
+    justify-content: center;
+}
+
+ion-col{
+    ion-input{
+       border: solid 1px rgb(148, 179, 236);
+       width: 50%;
+       height: 25px;
+    }
+ }
+
+
+ .label {
+    text-align: right;
+    padding-top: 30px;
+}
+
+.mainLabel {
+    color: rgb(72, 43, 233);
+    font-size: 20px;
+    
+}
+
+.addCanal {
+    color: rgb(72, 43, 233);
+    cursor: pointer;
+}
+
+.colCanal {
+    text-align: left;
+    padding-top: 20px;
+}
+
+.label1 {
+    text-align: right;
+   
+}
+
+ion-row {
+    margin-top: 10px;
+}
+ 
+mat-form-field.mat-form-field {
+    font-size: 12px;
+  }

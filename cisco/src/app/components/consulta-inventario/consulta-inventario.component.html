@@ -1,0 +1,104 @@
+
+      <ion-row>
+        
+          <ion-col size-lg="7">
+            <ion-button (click)="formAddInv()">AGREGAR EQUIPO</ion-button>
+          </ion-col>
+        
+        <ion-col size-lg="4">
+          <mat-form-field>
+            <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Busqueda">
+          </mat-form-field>
+        </ion-col>
+      </ion-row>
+      
+      
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+            
+          <ng-container matColumnDef="anadir">
+            <th mat-header-cell *matHeaderCellDef> PRESTAR </th>
+            <td mat-cell *matCellDef="let element"> 
+                <ion-icon (click)="formAddLend(element)" name="add-outline"></ion-icon>
+              </td>
+          </ng-container>
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="seccion">
+            <th mat-header-cell *matHeaderCellDef> SECCION </th>
+            <td mat-cell *matCellDef="let element"> {{element.seccion}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          
+          <ng-container matColumnDef="posicion">
+            <th mat-header-cell *matHeaderCellDef> POSICION </th>
+            <td mat-cell *matCellDef="let element"> {{element.posicion}} </td>
+          </ng-container>
+        
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef> ESTADO </th>
+            <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="producto">
+            <th mat-header-cell *matHeaderCellDef> PRODUCTO </th>
+            <td mat-cell *matCellDef="let element"> {{element.producto}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="pdrPid">
+            <th mat-header-cell *matHeaderCellDef> PDR/PID </th>
+            <td mat-cell *matCellDef="let element"> {{element.pdrPid}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="serial">
+            <th mat-header-cell *matHeaderCellDef> SERIAL </th>
+            <td mat-cell *matCellDef="let element"> {{element.serial}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="codigoGet">
+            <th mat-header-cell *matHeaderCellDef> CODIGO </th>
+            <td mat-cell *matCellDef="let element"> {{element.codigoGet}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="canal">
+            <th mat-header-cell *matHeaderCellDef> CANAL </th>
+            <td mat-cell *matCellDef="let element"> {{element.canal}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="observaciones">
+            <th mat-header-cell *matHeaderCellDef> OBSERVACIONES </th>
+            <td mat-cell *matCellDef="let element"> {{element.observaciones}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="editar">
+            <th mat-header-cell *matHeaderCellDef> EDITAR </th>
+            <td mat-cell *matCellDef="let element"> 
+                <ion-icon (click)="formEdit(element)" name="pencil-outline"> </ion-icon> 
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="borrar">
+            <th mat-header-cell *matHeaderCellDef> BORRAR </th>
+            <td mat-cell *matCellDef="let element"> <ion-icon name="trash-outline" 
+              (click)="deletear()"></ion-icon> </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+        </table>
+
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+      </div>
+
+      <ion-content *ngIf="open">
+        <app-agregar-prestamo></app-agregar-prestamo>
+      </ion-content>
+
+      
+

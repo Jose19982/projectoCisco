@@ -1,0 +1,100 @@
+      <ion-row>
+
+        <ion-col size-lg="9">
+          
+        </ion-col>
+              
+      <ion-col size-lg="3">
+        <mat-form-field>
+          <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Busqueda">
+        </mat-form-field>
+      </ion-col>
+      
+      </ion-row>
+
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="codigoDelPrestamo">
+            <th mat-header-cell *matHeaderCellDef> CODIGO DEL PRESTAMO </th>
+            <td mat-cell *matCellDef="let element"> {{element.codigoDelPrestamo}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="equipoPrestadoPid">
+            <th mat-header-cell *matHeaderCellDef> EQUIPO PRESTADO PID# </th>
+            <td mat-cell *matCellDef="let element"> {{element.equipoPrestadoPid}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="serial">
+            <th mat-header-cell *matHeaderCellDef> SERIAL </th>
+            <td mat-cell *matCellDef="let element"> {{element.serial}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="canal">
+            <th mat-header-cell *matHeaderCellDef> CANAL </th>
+            <td mat-cell *matCellDef="let element"> {{element.canal}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="fechaDelPrestamo">
+            <th mat-header-cell *matHeaderCellDef> FECHA DEL PRESTAMO </th>
+            <td mat-cell *matCellDef="let element"> {{element.fechaDelPrestamo}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="mes">
+            <th mat-header-cell *matHeaderCellDef> MES </th>
+            <td mat-cell *matCellDef="let element"> {{element.mes}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="devolucionEstimada">
+            <th mat-header-cell *matHeaderCellDef> DEVOLUCION ESTIMADA </th>
+            <td mat-cell *matCellDef="let element"> {{element.devolucionEstimada}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="devolucionReal">
+            <th mat-header-cell *matHeaderCellDef> DEVOLUCION REAL </th>
+            <td mat-cell *matCellDef="let element"> {{element.devolucionReal}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="devuelto">
+            <th mat-header-cell *matHeaderCellDef> DEVUELTO </th>
+            <td mat-cell *matCellDef="let element"> {{element.devuelto}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="estadoReal">
+            <th mat-header-cell *matHeaderCellDef> ESTADO REAL </th>
+            <td mat-cell *matCellDef="let element"> {{element.estadoReal}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="diasTranscurridos">
+            <th mat-header-cell *matHeaderCellDef> DIAS TRANSCURRIDOS </th>
+            <td mat-cell *matCellDef="let element"> {{element.diasTranscurridos}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="observaciones">
+            <th mat-header-cell *matHeaderCellDef> OBSERVACIONES </th>
+            <td mat-cell *matCellDef="let element"> {{element.observaciones}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="editar">
+            <th mat-header-cell *matHeaderCellDef> EDITAR </th>
+            <td mat-cell *matCellDef="let element"> 
+              <ion-icon (click)="formEditLend(element)" name="pencil-outline"></ion-icon> 
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="borrar">
+            <th mat-header-cell *matHeaderCellDef> BORRAR </th>
+            <td mat-cell *matCellDef="let element"> <ion-icon name="trash-outline"></ion-icon> </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      </div>
+

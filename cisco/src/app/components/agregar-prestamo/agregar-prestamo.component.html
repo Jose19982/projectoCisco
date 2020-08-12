@@ -1,0 +1,213 @@
+<ion-content>
+
+  <ion-row >
+    <ion-col style="text-align: center;">
+      <ion-label class="mainLabel">PRESTAR ESTE EQUIPO</ion-label>
+    </ion-col>
+  </ion-row>
+
+                      <!-- beginning of the form -->
+  <ion-grid>
+    <form [formGroup]="contactForm" (submit)="onSubmit()">
+
+                      <!--Line of Last Code -->
+      <ion-row>
+
+        <ion-col size-lg="5" class="label">
+          <ion-label>ÙLTIMO CODIGO</ion-label>
+        </ion-col>
+
+        <ion-col size-lg="5">
+          <mat-form-field appearance="standard">
+            <mat-label>Por ejemplo 456</mat-label>
+            <input matInput formControlName="lastCodigo">
+            <mat-error *ngIf="lastCodigo.invalid && (lastCodigo.dirty || lastCodigo.touched)">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </ion-col>
+
+      </ion-row>
+
+                            <!--Line of loan code -->
+      <ion-row>
+
+        <ion-col size-lg="5" class="label">
+          <ion-label>CODIGO DEL PRESTAMO</ion-label>
+        </ion-col>
+
+        <ion-col size-lg="5">
+          <mat-form-field appearance="standard">
+            <mat-label>Por ejemplo 123456</mat-label>
+            <input matInput formControlName="codigoOfLand">
+            <mat-error *ngIf="codigoOfLand.invalid && (codigoOfLand.dirty || codigoOfLand.touched)">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </ion-col>
+
+      </ion-row>
+
+                          <!--Line of borrowed equipment -->
+      <ion-row>
+
+        <ion-col size-lg="5" class="label">
+          <ion-label>EQUIPO PRESTADO PID</ion-label>
+        </ion-col>
+
+        <ion-col size-lg="5">
+          <mat-form-field appearance="standard">
+            <input matInput readonly formControlName="equipoPrestado">
+            <mat-error *ngIf="equipoPrestado.invalid && (equipoPrestado.dirty || equipoPrestado.touched)">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </ion-col>
+
+      </ion-row>
+
+                                <!--Line of serial -->
+      <ion-row>
+
+        <ion-col size-lg="5" class="label">
+          <ion-label>SERIAL</ion-label>
+        </ion-col>
+
+        <ion-col size-lg="5">
+          <mat-form-field appearance="standard">
+            <input matInput readonly formControlName="serial">
+            <mat-error *ngIf="serial.invalid && (serial.dirty || serial.touched)">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </ion-col>
+
+      </ion-row>
+  
+                                <!--Line of select channel -->
+      <ion-row>
+
+        <ion-col size-lg="5" class="label">
+          <ion-label>CANAL</ion-label>
+        </ion-col>
+
+        <ion-col size-lg="3">
+          <mat-form-field>
+            <mat-label>Seleccione una opcion</mat-label>
+            <mat-select formControlName="canal">
+              <mat-option *ngFor="let canal of canalValue" [value]="canal.value">
+                {{canal.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ion-col>
+
+        <ion-col class="colCanal">
+          <ion-label class="addCanal" (click)="formAddCanal()">+ Agregar nuevo canal</ion-label>
+        </ion-col>
+
+      </ion-row>
+
+                          <!--Line of loan date -->
+      <ion-row>
+
+        <ion-col size-lg="5" class="label">
+          <ion-label>FECHA DEL PRESTAMO</ion-label>
+        </ion-col>
+
+        <ion-col size-lg="5">
+          <mat-form-field>
+            <mat-label>MM/DD/YYYY</mat-label>
+            <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" formControlName="fechaPrestamo">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </ion-col>
+
+      </ion-row>
+
+                          <!--Line of select month -->
+      <ion-row>
+
+        <ion-col size-lg="5" class="label">
+          <ion-label>MES</ion-label>
+        </ion-col>
+
+        <ion-col size-lg="5">
+          <mat-form-field>
+            <mat-label>Seleccione una opcion</mat-label>
+            <mat-select formControlName="mesOfLand">
+              <mat-option *ngFor="let mes of mesValue" [value]="mes.value">
+                {{mes.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ion-col>
+
+      </ion-row>
+
+                          <!--Line of estimated return date  -->
+      <ion-row>
+
+        <ion-col size-lg="5" class="label">
+          <ion-label>DEVOLUCION ESTIMADA</ion-label>
+        </ion-col>
+
+        <ion-col size-lg="5">
+          <mat-form-field>
+            <mat-label>MM/DD/YYYY</mat-label>
+            <input matInput [matDatepicker]="datePicker" [min]="minDate" formControlName="devolucionEstimada">
+            <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+            <mat-datepicker #datePicker></mat-datepicker>
+          </mat-form-field>      
+        </ion-col>
+
+      </ion-row>  
+
+                          <!--Line of state  --> 
+      <ion-row>
+
+        <ion-col size-lg="5" class="label">
+          <ion-label>ESTADO</ion-label>
+        </ion-col>
+
+        <ion-col size-lg="5">
+          <mat-form-field>
+            <mat-select [disabled]="!editable" formControlName="estado">
+              <mat-option *ngFor="let estado of estadoValue" [value]="estado.value">
+                {{estado.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ion-col>
+
+      </ion-row>
+
+                                  <!--Line of entering observations  -->
+      <ion-row>
+
+        <ion-col size-lg="5" class="label">
+          <ion-label>OBSERVACIONES</ion-label>
+        </ion-col>
+
+        <ion-col size-lg="5" >
+          <mat-form-field>
+            <mat-label>Observaciones</mat-label>
+            <textarea matInput formControlName="observaciones"></textarea>
+          </mat-form-field>
+        </ion-col>
+
+      </ion-row>
+
+                          <!--Line of buttons (Save/toReturn)  -->
+      <ion-row>
+
+        <ion-col size-lg="6" class="label1">
+          <ion-button (click)="regresar()" shape="round" >Regresar</ion-button>
+        </ion-col>
+
+        <ion-col size-lg="2">
+          <ion-button type="submit" [disabled]="!contactForm.valid" shape="round"
+          (click)="presentAlert()">Guardar</ion-button>
+        </ion-col>
+
+      </ion-row>
+
+
+    </form>
+  </ion-grid>
+
+</ion-content>
+

@@ -1,0 +1,52 @@
+
+      <ion-header>
+        <ion-toolbar>
+
+
+            <ion-tabs>
+              <ion-tab-bar  slot="bottom">
+                <img class="inicio" (click)="inicio()" src="https://www.intersoftla.com/wp-content/uploads/2018/07/Cisco-1-1280x620.png" 
+                width="100px"/>
+               
+                <ion-tab-button (click)="mostrar()">
+                  <ion-icon name="folder-open"></ion-icon>
+                  <ion-label>Consultar inventario</ion-label>
+                </ion-tab-button>
+            
+                <ion-tab-button (click)="mostrarprestamo()">
+                  <ion-icon name="document-text"></ion-icon>
+                  <ion-label>Consultar prestamos</ion-label>
+                </ion-tab-button>
+              
+              </ion-tab-bar>
+              
+            </ion-tabs>
+          </ion-toolbar>
+      </ion-header>
+
+  
+
+
+  <ion-content *ngIf="open">
+    <app-consulta-inventario></app-consulta-inventario>
+    </ion-content>
+
+    <ion-content *ngIf="openprestamo">
+      <app-consulta-prestamo></app-consulta-prestamo>
+      </ion-content>
+
+        <ion-content *ngIf="close">
+          <mat-grid-list cols="1" rowHeight="2:1">
+            <mat-grid-tile> <img src="https://www.intersoftla.com/wp-content/uploads/2018/07/Cisco-1-1280x620.png" 
+              width="100%"/>
+            </mat-grid-tile>
+            
+          </mat-grid-list>
+        </ion-content>
+      
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+    
+  }
+ 
+  ion-icon {
+    color: #3880ff;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  .mat-cell {
+    text-align: center;
+    justify-content:center;
+  }
+
+  th.mat-header-cell {
+    text-align: center;
+  }
+
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
+    padding: 7px;
+  }

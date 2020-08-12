@@ -1,0 +1,38 @@
+<ion-grid>
+
+  <ion-row class="mainRow">
+    <ion-col>
+      <ion-label class="labelMain">Agregar un nuevo canal</ion-label>
+    </ion-col>
+  </ion-row>
+  
+  <form [formGroup]="contactForm" (submit)="onSubmit()">
+    <ion-row >
+
+    <ion-col class="mainLabel">
+      <ion-label >Nombre del canal</ion-label>
+    </ion-col>
+
+    <ion-col>
+      <mat-form-field appearance="standard">
+        <mat-label>Ingrese el nombre del canal</mat-label>
+        <input matInput placeholder="Por Ejemplo Cisco" formControlName="canal">
+      </mat-form-field>
+    </ion-col>
+
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-button (click)="regresar()" shape="round" type="submit">Cancelar</ion-button>
+    </ion-col>
+
+    <ion-col>
+      <ion-button type="submit" [disabled]="!contactForm.valid" shape="round"
+      (click)="presentAlert()">Guardar</ion-button>
+    </ion-col>
+  </ion-row>
+
+</form>
+  
+</ion-grid>
